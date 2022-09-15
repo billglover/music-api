@@ -41,3 +41,54 @@ describe('GET /music/:artist/:song', () => {
 		expect(response.text).toBe('Song not found');
 	});
 });
+
+describe('GET /music - extra tests', () => {
+	test('should return an array of 10 artists', async () => {
+		const response = await request(app).get('/music');
+
+		// This is just a warm-up. You've already done this test before.
+		// Replace the line below to confirm that array contains 10 artists
+		// Do something different though, try: https://jestjs.io/docs/expect#tohavelengthnumber
+		expect(false).toBe(true);
+	});
+
+	test('should have Sofie Tukker as the first artist in the array', async () => {
+		const response = await request(app).get('/music');
+
+		// Write a test (i.e. expect) that confirms 'Sofie Tukker' is the first 
+		// artist returned in the array of Music.
+		expect(false).toBe(true);
+	});
+
+	test('should include an Artist for every item in the array', async () => {
+		const response = await request(app).get('/music');
+
+		// Write a test (i.e. expect) that confirms every item in the
+		// array includes an Artist. I've modified the database so that
+		// this will catch a typo.
+
+		// I've left an example of a loop to look at every item in the array.
+		// Your job is to replace the line beginning `expect`.
+		response.body.Music.forEach(i => {
+			expect(false).toBe(true);
+		});
+	});
+
+	test('should include a valid Deezer URL for every item in the array', async () => {
+		const response = await request(app).get('/music');
+
+		// This time you get to write your own loop and expect line. Pay attention to the
+		// wording of the test description. How do you test this is a Deezer URL and not 
+		// a spotify URL?
+		expect(false).toBe(true);
+	});
+
+	test('should not include a youtube URL in any item in the array', async () => {
+		const response = await request(app).get('/music');
+
+		// This time you get to write your own loop again, but you are looking for
+		// a negative. You want to ensure that there are no YouTube URLs in the 
+		// playlist.
+		expect(false).toBe(true);
+	});
+});

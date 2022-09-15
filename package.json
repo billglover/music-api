@@ -4,7 +4,7 @@
   "description": "random song suggestion",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --maxWorkers=1"
   },
   "repository": {
     "type": "git",
