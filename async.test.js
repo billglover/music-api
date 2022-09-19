@@ -1,15 +1,20 @@
 const request = require('supertest');
 const app = require('./app.js');
+const deezer = require('./deezer.js').loadData;
+
+beforeAll(async () => {
+	app.set('musicChart', await deezer());
+	var melody = app.get("musicChart");
+});
 
 describe('GET /music', () => {
 	test('should be ok, status 200', async () => {
 		const response = await request(app).get('/music');
 		expect(response.statusCode).toBe(200);
 	});
-	test('should return an artist', async () => {
+	it('should return an artist', async () => {
 		const response = await request(app).get('/music');
-		console.log(response.body);
-		expect(response.body.tracks.data[0].artist.name).toBe(true);
+		expect(response.body.tracks.data[0]).toHaveProperty("artist.name");
 	});
 });
 
